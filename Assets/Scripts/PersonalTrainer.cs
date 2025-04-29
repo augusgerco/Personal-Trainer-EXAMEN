@@ -24,12 +24,12 @@ public class PersonalTrainer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(cantidadHorasSemanales < 1 && cantidadHorasSemanales > 6){
-            Debug.LogError("Error. La cantidad de horas debe ser mayor que 0 y menor que 6");
+        if(cantidadHorasSemanales < 1 || cantidadHorasSemanales > 6){
+            Debug.Log("Error. La cantidad de horas debe ser mayor que 0 y menor que 6");
             return;
         }
         if(tipoEntrenamiento != entrenamientoCardio && tipoEntrenamiento != entrenamientoFuerza && tipoEntrenamiento != entrenamientoRecreativo){
-            Debug.LogError("Error. Debe ingresar un codigo de entrenamiento correcto (C, F u R)."); ;
+            Debug.Log("Error. Debe ingresar un codigo de entrenamiento correcto (C, F u R).");
             return;
         }
         if(tipoEntrenamiento == entrenamientoCardio){
@@ -43,8 +43,12 @@ public class PersonalTrainer : MonoBehaviour
         }
         if(cantidadHorasSemanales == maximoHorasSemanales){
             totalACobrar = totalACobrar + subtotalACobrar * descuentoTotal;
-            Debug.Log("")
         }
+
+        Debug.Log("Elegiste el tipo de entrenamiento " + tipoEntrenamiento);
+        Debug.Log("Reservaste " + cantidadHorasSemanales + " horas semanales");
+        Debug.Log("El precio sin el descuento es de $" + subtotalACobrar);
+        Debug.Log("El precio con el descuento (si es que se aplica) es de $" + totalACobrar);
 
     }
 
